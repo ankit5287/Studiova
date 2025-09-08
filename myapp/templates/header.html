@@ -1,0 +1,139 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studiova</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/logos/favicon.svg' %}" />
+  <link rel="stylesheet" href="{% static 'libs/owl.carousel/dist/assets/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'libs/aos-master/dist/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header border-4 border-primary border-top position-fixed start-0 top-0 w-100">
+    <div class="container">
+      <div class="header-wrapper d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <a href="{% url 'index'%}" class="logo-white">
+            <img src="{% static 'images/logos/logo-white.svg' %}" alt="logo" class="img-fluid">
+          </a>
+          <a href="index.html" class="logo-dark">
+            <img src="{% static 'images/logos/logo-dark.svg' %}" alt="logo" class="img-fluid">
+          </a>
+        </div>
+        <div class="d-flex align-items-center gap-4">
+
+          <div class="btn-group">
+            <button
+              class="btn btn-secondary toggle-menu round-45 p-2 d-flex align-items-center justify-content-center bg-white rounded-circle"
+              type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+              <iconify-icon icon="solar:hamburger-menu-line-duotone" class="menu-icon fs-8 text-dark"></iconify-icon>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end p-4">
+              <div class="d-flex flex-column gap-6">
+                <div class="hstack justify-content-between border-bottom pb-6">
+                  <p class="mb-0 fs-5 text-dark">Menu</p>
+                  <button type="button" class="btn-close opacity-75" aria-label="Close"></button>
+                </div>
+                <div class="d-flex flex-column gap-3">
+                  <ul class="header-menu list-unstyled mb-0 d-flex flex-column gap-2">
+                    <li class="header-item">
+                      <a href="{% url 'index' %}" aria-current="true"
+                        class="header-link active hstack gap-2 fs-7 fw-bold text-dark"><img
+                          src="{% static 'images/svgs/secondary-leaf.svg' %}" alt="" width="20" height="20"
+                          class="img-fluid animate-spin">Home</a>
+                    </li>
+                    <li class="header-item">
+                      <a href="{% url 'about' %}" class="header-link hstack gap-2 fs-7 fw-bold text-dark"><img
+                          src="{% static 'images/svgs/secondary-leaf.svg' %}" alt="" width="20" height="20"
+                          class="img-fluid animate-spin">about</a>
+                    </li>
+            
+                    <li class="header-item">
+                      <a href="{% url 'contact'%}" class="header-link hstack gap-2 fs-7 fw-bold text-dark"><img
+                          src="{% static 'images/svgs/secondary-leaf.svg' %}" alt="" width="20" height="20"
+                          class="img-fluid animate-spin">Contact</a>
+                    </li>
+                
+                  </ul>
+                  <div class="hstack gap-3">
+                   {% if request.session.Email %}
+                   <a href="{% url 'signout' %}" class="btn btn-dark">Sign Out</a>
+                   <div>
+                  <a class="text-dark" href="tel:+1-212-456-7890">Hello! {{request.session.Name}}</a>
+                  <a class="fs-8 text-dark fw-bold" href="mailto:info@wrappixel.com">{{request.session.Email}}</a>
+                </div>
+                   {% else %}
+                   <a href="{% url 'signin' %}" class="btn btn-dark">Sign In</a>
+                   <a href="{% url 'signup' %}" class="btn btn-dark">Sign Up</a>
+                    {% endif %}
+                  </div>
+                </div>
+                
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{%block content %}
+{% endblock %}
+  <footer class="footer bg-dark py-5 py-lg-11 py-xl-12">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-5 mb-8 mb-xl-0">
+          <div class="d-flex flex-column gap-8 pe-xl-5">
+            <h2 class="mb-0 text-white">Build something together?</h2>
+            <div class="d-flex flex-column gap-2">
+              <a href="" target="_blank" class="link-hover hstack gap-3 text-white fs-5">
+                <iconify-icon icon="lucide:arrow-up-right" class="fs-7 text-primary"></iconify-icon>
+                formicro32@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xl-2 mb-8 mb-xl-0">
+          <ul class="footer-menu list-unstyled mb-0 d-flex flex-column gap-2">
+            <li><a class="link-hover fs-5 text-white" href="#!">Home</a></li>
+            <li><a class="link-hover fs-5 text-white" href="#!">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-xl-2 mb-8 mb-xl-0">
+          <ul class="footer-menu list-unstyled mb-0 d-flex flex-column gap-2">
+            <li><a class="link-hover fs-5 text-white" href="https://www.facebook.com/ankit.nandoliya.3">Facebook</a></li>
+            <li><a class="link-hover fs-5 text-white" href="https://www.instagram.com/ankit_n2?igsh=ZWhwaDB2N2JrZ2xw">Instagram</a></li>
+            <li><a class="link-hover fs-5 text-white" href="https://www.linkedin.com/in/ankit-nandoliya-425a1429b/">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-xl-3 mb-8 mb-xl-0">
+          <p class="mb-0 text-white text-opacity-70 text-md-end">© Creatify copyright 2025</p>
+        </div>
+      </div>
+    </div>
+  
+  </footer>
+
+  <div class="get-template hstack gap-2">
+    <button class="btn bg-primary p-2 round-52 rounded-circle hstack justify-content-center flex-shrink-0"
+      id="scrollToTopBtn">
+      <iconify-icon icon="lucide:arrow-up" class="fs-7 text-dark"></iconify-icon>
+    </button>
+  </div>
+
+  <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="{% static 'libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'libs/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'libs/aos-master/dist/aos.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <!-- solar icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

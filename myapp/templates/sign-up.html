@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studiova</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/logos/favicon.svg' %}" />
+  <link rel="stylesheet" href="{% static 'css/libs/owl.carousel/dist/assets/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/libs/aos-master/dist/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+
+  <!--  Page Wrapper -->
+  <div class="page-wrapper overflow-hidden">
+
+    <!--  Get in touch Section -->
+    <section
+      class="bg-light-gray border-top border-primary border-4 d-flex align-items-center justify-content-center min-vh-100">
+      <div class="container py-3">
+        <div class="sign-in card mx-auto shadow-lg">
+          <div class="card-body py-8 px-lg-5">
+            <a href="index.html" class="mb-8 hstack justify-content-center">
+              <img src="{% static 'images/logos/logo-dark.svg' %}" alt="logo-dark" class="img-fluid">
+            </a>
+               {% if msg %}
+                <b style=color:'blue';>{{msg}}</b>
+              {% endif %}
+            <form class="d-flex flex-column gap-3" action="{% url 'signup' %}" method="post">
+              {% csrf_token %}
+              <div>
+                <input type="text" id="disabledTextInput" class="form-control border-bottom" placeholder="Name" name='name'>
+              </div>
+              <div>
+                <input type="email" class="form-control border-bottom" id="exampleInputEmail1" placeholder="Email" name='email' aria-describedby="emailHelp">
+              </div>
+              <div>
+                <input type="password" class="form-control border-bottom" id="inputPassword" placeholder="Password" name='password'>
+              </div>
+               <button type="SUBMIT" class="btn w-100 justify-content-center" value='SUBMIT'>
+                  <span class="btn-text">Sign Up</span>
+                  <iconify-icon icon="lucide:arrow-up-right"
+                    class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </button>
+            </form>
+            <p class="text-center mb-1 d-block fw-medium">By creating an account, you agree with our <a
+                class="text-dark" href="#!">Privacy</a> and <a class="text-dark" href="#!">Policy</a>.</p>
+            <p class="mb-0 fw-medium text-center">Already have an account? <a class="text-dark" href="{% url 'signin'%}">Sign
+                In</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="get-template hstack gap-2">
+    
+    <button class="btn bg-primary p-2 round-52 rounded-circle hstack justify-content-center flex-shrink-0"
+      id="scrollToTopBtn">
+      <iconify-icon icon="lucide:arrow-up" class="fs-7 text-dark"></iconify-icon>
+    </button>
+  </div>
+
+
+  <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'libs/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'libs/aos-master/dist/aos.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <!-- solar icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>
